@@ -43,6 +43,8 @@ extends CharacterBody3D
 @export var input_sprint : String = "sprint"
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "freefly"
+## Name of Input Action to return to Main Menu.
+@export var input_mainmenu : String = "main_menu"
 
 var mouse_captured : bool = false
 var look_rotation : Vector2
@@ -57,6 +59,8 @@ func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -75,7 +79,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			enable_freefly()
 		else:
 			disable_freefly()
-
+			
+# return to main menu
+func _input(event):
+	if Input.is_action_pressed("main_menu"):
+		get_tree().change_scene_to_file("res://main_menu.tscn")
+		
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:

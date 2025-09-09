@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://btx586r70etio"]
+
+[ext_resource type="Script" uid="uid://crlm6uwu5enck" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="3rdPerson" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 119.0
+offset_right = 669.0
+offset_bottom = 219.0
+text = "3rd Person
+"
+
+[node name="Orthogonal" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 338.0
+offset_right = 670.0
+offset_bottom = 438.0
+text = "Orthogonal"
+
+[node name="3DShip" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 229.0
+offset_right = 669.0
+offset_bottom = 329.0
+text = "3D Ship
+"
+
+[node name="Quit" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 450.0
+offset_right = 671.0
+offset_bottom = 550.0
+text = "Quit
+"
+
+[connection signal="pressed" from="ButtonManager/3rdPerson" to="." method="_on_rd_person_pressed"]
+[connection signal="pressed" from="ButtonManager/Orthogonal" to="." method="_on_orthogonal_pressed"]
+[connection signal="pressed" from="ButtonManager/3DShip" to="." method="_on_d_ship_pressed"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
