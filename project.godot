@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HGGJ25_SpaceGame"
-run/main_scene="uid://b52ar5dyymcux"
+run/main_scene="uid://btx586r70etio"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
