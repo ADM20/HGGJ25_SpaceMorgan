@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://7kn2wd7xviw4"]
+
+[ext_resource type="PackedScene" uid="uid://4stk8dtwugal" path="res://addons/proto_controller/TopDownOrthogonal_proto_controller.tscn" id="1_6qjqp"]
+[ext_resource type="PackedScene" uid="uid://bqprgiho1vudl" path="res://RoundSpaceShip.tscn" id="2_fbkoh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qjqp"]
+sky_top_color = Color(0.386642, 0.464841, 0.481484, 1)
+sky_horizon_color = Color(0.665283, 0.677083, 0.672243, 1)
+ground_horizon_color = Color(0.665283, 0.677083, 0.672243, 1)
+
+[sub_resource type="Sky" id="Sky_fbkoh"]
+sky_material = SubResource("ProceduralSkyMaterial_6qjqp")
+
+[sub_resource type="Environment" id="Environment_ei3vl"]
+background_mode = 2
+sky = SubResource("Sky_fbkoh")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ei3vl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.744312, -0.58966, 0.313531, 0, 0.469475, 0.882946, -0.667832, 0.657187, -0.349436, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ProtoController" parent="." node_paths=PackedStringArray("planet") instance=ExtResource("1_6qjqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8, 0.700001)
+planet = NodePath("../Planet")
+
+[node name="Planet" parent="." instance=ExtResource("2_fbkoh")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.34202, -0.939693, 0, 0.939693, 0.34202, 0, 0, 0, 1, 0.38274, 0.0732222, 0.8)
+height = 28.5
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.34202, 3.72529e-08, -0.939693, 0.939693, -2.98023e-08, 0.34202, 0, -1, -4.37114e-08, 0.38274, 0.0732222, 0.8)
+height = 28.5
