@@ -22,8 +22,9 @@ glow_enabled = true
 environment = SubResource("Environment_37frh")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.744312, -0.589661, 0.313528, 0, 0.469472, 0.882948, -0.667832, 0.657188, -0.349433, 0, 0, 0)
+transform = Transform3D(-0.744312, -0.589661, 0.313528, 0, 0.469472, 0.882947, -0.667832, 0.657188, -0.349434, 1, -0.3, 0.1)
 shadow_enabled = true
+directional_shadow_blend_splits = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -1.6)
@@ -149,4 +150,4 @@ height = 5.575
 sides = 32
 
 [node name="ProtoController" parent="." instance=ExtResource("1_yrxh1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.5, 4.3)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.4, 0.5, 4.3)

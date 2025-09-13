@@ -56,6 +56,7 @@ var freeflying : bool = false
 func _ready() -> void:
 	capture_mouse()
 	check_input_mappings()
+	$Head.position = position
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
 
@@ -120,6 +121,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Use velocity to actually move
 	move_and_slide()
+	#Update Camera Location (Camera Lag)
+	$Head.position = lerp($Head.position,position,0.05)
+	$Head.rotation = rotation
 
 
 ## Rotate us to look around.
@@ -127,7 +131,7 @@ func _physics_process(delta: float) -> void:
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
 func rotate_look(rot_input : Vector2):
 	look_rotation.x -= rot_input.y * look_speed
-	look_rotation.x = clamp(look_rotation.x, deg_to_rad(-85), deg_to_rad(85))
+	look_rotation.x = clamp(look_rotation.x, deg_to_rad(0), deg_to_rad(0))
 	look_rotation.y -= rot_input.x * look_speed
 	transform.basis = Basis()
 	rotate_y(look_rotation.y)

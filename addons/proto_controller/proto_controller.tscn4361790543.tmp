@@ -15,6 +15,23 @@ height = 1.8
 
 [node name="ProtoController" type="CharacterBody3D"]
 script = ExtResource("1_ucva2")
+can_move = null
+has_gravity = null
+can_jump = null
+can_sprint = null
+can_freefly = null
+look_speed = null
+base_speed = null
+jump_velocity = null
+sprint_speed = null
+freefly_speed = null
+input_left = null
+input_right = null
+input_forward = null
+input_back = null
+input_jump = null
+input_sprint = null
+input_freefly = null
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -25,14 +42,14 @@ mesh = SubResource("CapsuleMesh_ucva2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_iof21")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 top_level = true
 
-[node name="CameraTarget" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 16.139, 15.6931)
+[node name="CameraTarget" type="Node3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 10.7, 8.9)
 
-[node name="Camera3D" type="Camera3D" parent="Head/CameraTarget"]
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
 projection = 1
 current = true
 size = 15.0
