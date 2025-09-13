@@ -51,5 +51,5 @@ main_menu={
 [physics]
 
 3d/physics_engine="Jolt Physics"
-3d/default_gravity=0.0
-3d/default_gravity_vector=Vector3(0, 0, 0)
+3d/default_gravity=-9.81
+3d/default_gravity_vector=Vector3(0, 1, 0)

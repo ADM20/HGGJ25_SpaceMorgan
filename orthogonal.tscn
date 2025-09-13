@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn7ovoqx7te6w"]
 
-[ext_resource type="PackedScene" uid="uid://bsbbvbnnv2mw5" path="res://addons/proto_controller/orthogonal_proto_controller.tscn" id="1_yrxh1"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_yrxh1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_onc1d"]
 sky_top_color = Color(0.386642, 0.464841, 0.481484, 1)
@@ -17,11 +17,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="OverShoulder" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999542, -0.002598, -0.0301537, 0.0292444, 0.339502, 0.940151, 0.00779468, -0.940602, 0.339422, 1.70942, 17.965, 5.47255)
-projection = 1
-size = 31.488
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_37frh")
@@ -154,4 +149,4 @@ height = 5.575
 sides = 32
 
 [node name="ProtoController" parent="." instance=ExtResource("1_yrxh1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.5, 4.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.5, 4.3)
