@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://btx586r70etio"]
 
-[ext_resource type="Script" uid="uid://crlm6uwu5enck" path="res://Scripts/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://crlm6uwu5enck" path="res://Scripts/main_menu.gd" id="1_28flt"]
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_06t4h")
+script = ExtResource("1_28flt")
 
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
@@ -36,7 +36,7 @@ offset_right = 675.0
 offset_bottom = 317.0
 text = "test"
 
-[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_orthogonal_pressed"]
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ButtonManager/test" to="." method="_on_test_pressed"]
