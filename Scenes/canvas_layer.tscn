@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2gkfgp6qswdq"]
+
+[ext_resource type="Script" uid="uid://b2cg4nnxa0nab" path="res://progress_bar.gd" id="1_5oaki"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5oaki"]
+
+[sub_resource type="Gradient" id="Gradient_q85f0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p1mel"]
+gradient = SubResource("Gradient_q85f0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5uhc"]
+texture = SubResource("GradientTexture2D_p1mel")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 237.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxTexture_5oaki")
+theme_override_styles/fill = SubResource("StyleBoxTexture_u5uhc")
+script = ExtResource("1_5oaki")
+
+[node name="OxygenTimer" type="Timer" parent="ProgressBar"]
+wait_time = 10.0
+
+[connection signal="timeout" from="ProgressBar/OxygenTimer" to="ProgressBar" method="_on_oxygen_timer_timeout"]

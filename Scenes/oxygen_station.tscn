@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2jynhwltdc72"]
+
+[ext_resource type="Script" uid="uid://2d1qv8ha5p86" path="res://Scripts/oxygen_station.gd" id="1_jv737"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ahf8"]
+height = 1.34814
+radius = 2.15869
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jv737"]
+height = 1.59863
+radius = 0.883301
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_81shl"]
+
+[node name="OxygenStation" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_jv737")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0168457, 0)
+shape = SubResource("CylinderShape3D_2ahf8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0336914, 0)
+shape = SubResource("CylinderShape3D_jv737")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0336914, 0)
+mesh = SubResource("CylinderMesh_81shl")
+skeleton = NodePath("../..")
