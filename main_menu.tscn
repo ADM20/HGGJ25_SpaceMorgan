@@ -28,6 +28,15 @@ offset_bottom = 550.0
 text = "Quit
 "
 
-[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[node name="test" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 231.0
+offset_right = 675.0
+offset_bottom = 317.0
+text = "test"
+
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_orthogonal_pressed"]
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ButtonManager/test" to="." method="_on_test_pressed"]

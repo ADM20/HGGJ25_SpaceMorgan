@@ -5,6 +5,7 @@
 
 extends CharacterBody3D
 
+@onready var current_station
 ## Can we move around?
 @export var can_move : bool = true
 ## Are we affected by gravity?
@@ -88,6 +89,9 @@ func _physics_process(delta: float) -> void:
 		motion *= freefly_speed * delta
 		move_and_collide(motion)
 		return
+	if Input.is_action_just_pressed("interact"):
+		if current_station != null:
+			current_station.get_parent().interact()
 	
 	# Apply gravity to velocity
 	if has_gravity:
@@ -183,3 +187,14 @@ func check_input_mappings():
 	if can_freefly and not InputMap.has_action(input_freefly):
 		push_error("Freefly disabled. No InputAction found for input_freefly: " + input_freefly)
 		can_freefly = false
+
+
+func _on_area_3d_area_entered(area):
+	if area.get_parent().has_method("station"):
+		current_station = area
+		print(current_station)
+
+
+func _on_area_3d_area_exited(area):
+	if area.get_parent().has_method("station"):
+		current_station = null
