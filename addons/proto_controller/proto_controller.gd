@@ -198,3 +198,6 @@ func _on_area_3d_area_entered(area):
 func _on_area_3d_area_exited(area):
 	if area.get_parent().has_method("station"):
 		current_station = null
+
+func change_state(newState : String):
+	$StateMachine.change_state(newState)
