@@ -68,7 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		release_mouse()
 	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
@@ -80,7 +80,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			enable_freefly()
 		else:
 			disable_freefly()
-
+func _transition_camera(target_transform: Transform3D) -> void:
+	print(target_transform)
+	pass
+	
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
@@ -92,6 +95,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if current_station != null:
 			current_station.get_parent().interact()
+			## attempt at getting camera location to transition to 
+			## _transition_camera(current_station.get_parent().GetCameraLocation())
 	
 	# Apply gravity to velocity
 	if has_gravity:
@@ -128,6 +133,7 @@ func _physics_process(delta: float) -> void:
 	#Update Camera Location (Camera Lag)
 	$Head.position = lerp($Head.position,position,0.05)
 	$Head.rotation = rotation
+	
 
 
 ## Rotate us to look around.

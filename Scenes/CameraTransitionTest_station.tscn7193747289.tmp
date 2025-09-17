@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://clmrsi50y6tdf"]
+
+[ext_resource type="Script" uid="uid://b5vvluoxotmox" path="res://Scripts/camera_transition_test_station.gd" id="1_j07dc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e6xpa"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j07dc"]
+height = 1.34814
+radius = 2.15869
+
+[node name="CameraTransitionStation" type="Node3D"]
+script = ExtResource("1_j07dc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_e6xpa")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0168457, 0)
+shape = SubResource("CylinderShape3D_j07dc")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00372314, 2.30501, 5.39487)
+
+[node name="Camera3D" type="Camera3D" parent="CameraTarget"]

@@ -12,6 +12,7 @@ func _process(delta):
 
 func interact():
 	Global.set_oxygenlevel(100)
+	print("oxygen")
 
 func station():
 	pass
