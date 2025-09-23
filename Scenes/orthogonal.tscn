@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_5e0ym"]
 [ext_resource type="PackedScene" uid="uid://c2gkfgp6qswdq" path="res://Scenes/canvas_layer.tscn" id="2_bb540"]
 [ext_resource type="PackedScene" uid="uid://b2jynhwltdc72" path="res://Scenes/oxygen_station.tscn" id="3_x5k0e"]
-[ext_resource type="PackedScene" uid="uid://clmrsi50y6tdf" path="res://Scenes/CameraTransitionTest_station.tscn" id="4_wvs1l"]
 [ext_resource type="PackedScene" uid="uid://cl6tfdahfd5rg" path="res://Scenes/memories.tscn" id="5_bb540"]
+[ext_resource type="PackedScene" uid="uid://d3nijjvc82ox4" path="res://Scenes/spawner.tscn" id="5_x5k0e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_onc1d"]
 sky_top_color = Color(0.386642, 0.464841, 0.481484, 1)
@@ -56,10 +56,10 @@ transform = Transform3D(5.85, 0, 0, 0, 4.76, 0, 0, 0, 1, 0, 3.514, 1.6)
 size = Vector3(1, 1.3, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D2"]
-transform = Transform3D(0.410263, 0, 0, 0, -2.1121e-08, 1.07773, 0, -2.3, -2.24239e-07, 0, -0.378151, 0.15875)
+transform = Transform3D(0.410256, 0, 0, 0, -2.1121e-08, 0.567227, 0, -2.3, -1.18021e-07, 0, -0.378151, -0.0999999)
 operation = 2
-radius = 0.6
-height = 1.075
+radius = 1.07129
+height = 1.2
 sides = 32
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -161,8 +161,8 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.4, 0.5, 
 [node name="OxygenStation" parent="." instance=ExtResource("3_x5k0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.76773, 5)
 
-[node name="CameraTransitionStation" parent="." instance=ExtResource("4_wvs1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.151957, 4.58434, 19.5853)
-
 [node name="Memories" parent="." instance=ExtResource("5_bb540")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72036, 0.5, 3.17439)
+
+[node name="Spawner" parent="." instance=ExtResource("5_x5k0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.053, 4.77673, 0)

@@ -73,6 +73,7 @@ func _ready() -> void:
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
 	Camera1.make_current()
+	Camera2.clear_current()
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -116,8 +117,11 @@ func _physics_process(delta: float) -> void:
 		move_and_collide(motion)
 		return
 	if Input.is_action_just_pressed("interact"):
+		print("interact ", grabbing)
 		if current_station != null:
-			current_station.get_parent().interact()
+			current_station.get_parent().interact(grabbing)
+			if grabbing:
+				grab.queue_free()
 
 	if Input.is_action_just_pressed("grab"): #If we are pressing the grab action
 		print("hello!")
@@ -125,7 +129,6 @@ func _physics_process(delta: float) -> void:
 			grabbing = true
 			await get_tree().create_timer(2).timeout
 		elif grabbing == true: 
-			grab.queue_free()
 			grabbing = false
 
 	if grabbing:
@@ -171,7 +174,7 @@ func _physics_process(delta: float) -> void:
 	
 
 
-## Rotate us to look around.
+## Rotate us to look around.`
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
 func rotate_look(rot_input : Vector2):

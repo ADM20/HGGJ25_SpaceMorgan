@@ -1,5 +1,5 @@
-extends StaticBody3D
-
+extends Node3D
+@onready var enemy = preload("res://Scenes/memories.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,10 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func interact(grabbing : bool):
-	if grabbing:
-		Global.set_oxygenlevel(100)
-		print("oxygen")
 
-func station():
-	pass
+func _on_spawn_timer_timeout():
+	pass # Replace with function body.
