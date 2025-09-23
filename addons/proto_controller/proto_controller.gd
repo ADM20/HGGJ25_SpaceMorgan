@@ -17,6 +17,12 @@ extends CharacterBody3D
 ## Can we press to enter freefly mode (noclip)?
 @export var can_freefly : bool = false
 
+@export var push = 5
+@export var grab_force = 10
+@export var release_force = 0.4
+var grab:RigidBody3D
+
+
 @export_group("Speeds")
 ## Look around rotation speed.
 @export var look_speed : float = 0.002
@@ -44,11 +50,13 @@ extends CharacterBody3D
 @export var input_sprint : String = "sprint"
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "freefly"
-
+var grabbing : bool = false
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+@onready var grab_ray:Area3D =  $GrabRay #The raycast to check if there is something to grab
+@onready var grab_target:Node3D = $GrabRay/GrabTarget #The taget of the grabbed object
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
@@ -95,9 +103,21 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if current_station != null:
 			current_station.get_parent().interact()
-			## attempt at getting camera location to transition to 
-			## _transition_camera(current_station.get_parent().GetCameraLocation())
-	
+
+	if Input.is_action_just_pressed("grab"): #If we are pressing the grab action
+		print("hello!")
+		if grabbing == false && grab != null:
+			grabbing = true
+			await get_tree().create_timer(2).timeout
+		elif grabbing == true: 
+			grab.queue_free()
+			grabbing = false
+
+	if grabbing:
+		grab.global_position.x = grab_target.global_position.x
+		grab.global_position.y = grab_target.global_position.y
+		grab.global_position.z = grab_target.global_position.z -1
+		#grab.linear_velocity = grab_force * (grab_target.global_position - grab.global_position)
 	# Apply gravity to velocity
 	if has_gravity:
 		if not is_on_floor():
@@ -147,7 +167,11 @@ func rotate_look(rot_input : Vector2):
 	rotate_y(look_rotation.y)
 	head.transform.basis = Basis()
 	head.rotate_x(look_rotation.x)
-
+func release():
+	grab.max_contacts_reported = 0 #Disable collision check on the grabbed object
+	grab.contact_monitor = false #Disable collision check on the grabbed object
+	grab.linear_velocity *= release_force #Apply the release force
+	grab = null #Reset the grabbed object
 
 func enable_freefly():
 	collider.disabled = true
@@ -207,3 +231,13 @@ func _on_area_3d_area_exited(area):
 
 func change_state(newState : String):
 	$StateMachine.change_state(newState)
+
+func _on_grab_ray_body_entered(body):
+	print("YES!!!")
+	if body.has_method("memory") && grabbing == false:
+		grab = body
+
+
+func _on_grab_ray_body_exited(body):
+	if body.has_method("memory") && grabbing == false: 
+		grab = null

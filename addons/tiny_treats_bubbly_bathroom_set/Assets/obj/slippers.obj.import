@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3om87n24ubih"
+path="res://.godot/imported/slippers.obj-d4e96838c53ad82e0094db170b94a923.mesh"
+
+[deps]
+
+files=["res://.godot/imported/slippers.obj-d4e96838c53ad82e0094db170b94a923.mesh"]
+
+source_file="res://addons/tiny_treats_bubbly_bathroom_set/Assets/obj/slippers.obj"
+dest_files=["res://.godot/imported/slippers.obj-d4e96838c53ad82e0094db170b94a923.mesh", "res://.godot/imported/slippers.obj-d4e96838c53ad82e0094db170b94a923.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

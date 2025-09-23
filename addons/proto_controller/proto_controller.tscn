@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs72ogkvdd7d6"]
+[gd_scene load_steps=8 format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://bmai7yhulgmfw" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
 [ext_resource type="Script" uid="uid://bgpwynb1ffhm5" path="res://addons/proto_controller/state_machine.gd" id="2_wr06p"]
@@ -17,6 +17,9 @@ height = 1.8
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g2uji"]
 height = 0.918091
 radius = 1.33643
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wr06p"]
+size = Vector3(1, 1, 1.94836)
 
 [node name="ProtoController" type="CharacterBody3D"]
 script = ExtResource("1_ucva2")
@@ -52,5 +55,19 @@ shape = SubResource("CylinderShape3D_g2uji")
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_wr06p")
 
+[node name="GrabRay" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="GrabTarget" type="Node3D" parent="GrabRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.981207, 0.474182)
+shape = SubResource("BoxShape3D_wr06p")
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="GrabRay" to="." method="_on_grab_ray_body_entered"]
+[connection signal="body_exited" from="GrabRay" to="." method="_on_grab_ray_body_exited"]
