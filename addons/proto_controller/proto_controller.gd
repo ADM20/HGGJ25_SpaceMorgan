@@ -55,12 +55,16 @@ var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+var activecam1 : bool = true
+var activecam2 : bool = false
 @onready var grab_ray:Area3D =  $GrabRay #The raycast to check if there is something to grab
 @onready var grab_target:Node3D = $GrabRay/GrabTarget #The taget of the grabbed object
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var Camera1 = $Head/Camera3D
+@onready var Camera2 = $Head/Camera3D2
 
 func _ready() -> void:
 	capture_mouse()
@@ -68,7 +72,7 @@ func _ready() -> void:
 	$Head.position = position
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
-
+	Camera1.make_current()
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -88,12 +92,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			enable_freefly()
 		else:
 			disable_freefly()
-func _transition_camera(target_transform: Transform3D) -> void:
-	print(target_transform)
+func _transition_camera() -> void:
+	print("transition camera", activecam1, activecam2)
+	
+	if activecam1:
+		Camera2.make_current()
+		activecam2 = true
+		activecam1 = false
+	elif activecam2:
+		Camera1.make_current()
+		activecam1 = true
+		activecam2 = false
 	pass
 	
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
+	if Input.is_action_just_pressed("ui_accept"):
+		_transition_camera()
 	if can_freefly and freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 		var motion := (head.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
