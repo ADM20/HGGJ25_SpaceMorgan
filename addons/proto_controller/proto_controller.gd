@@ -109,7 +109,6 @@ func _physics_process(delta: float) -> void:
 				grab.queue_free()
 
 	if Input.is_action_just_pressed("grab"): #If we are pressing the grab action
-		print("hello!")
 		if grabbing == false && grab != null:
 			grabbing = true
 			await get_tree().create_timer(2).timeout
@@ -235,7 +234,6 @@ func change_state(newState : String):
 	$StateMachine.change_state(newState)
 
 func _on_grab_ray_body_entered(body):
-	print("YES!!!")
 	if body.has_method("memory") && grabbing == false:
 		grab = body
 

@@ -163,9 +163,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.053, 4.77673, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1, -2)
 
 [node name="GunnerStation" parent="." instance=ExtResource("7_wvs1l")]
-transform = Transform3D(-1, 0, -1.68854e-08, 0, 1, 0, 1.68854e-08, 0, -1, -4.8, 1, -19.5)
+transform = Transform3D(1, 0, 1.04308e-07, 0, 1, 0, -1.04308e-07, 0, 1, -4.8, 1, -19.5)
 
 [node name="GameState" parent="." instance=ExtResource("8_1fyhp")]
 
 [node name="RadarStation" parent="." instance=ExtResource("9_g3vfm")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 5.9, 0.7, -16.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 0.7, -16.7)
