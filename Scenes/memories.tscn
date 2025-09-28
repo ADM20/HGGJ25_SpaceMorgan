@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl6tfdahfd5rg"]
+
+[ext_resource type="Script" uid="uid://wdj7ca42y8uh" path="res://Scenes/memories.gd" id="1_iemk0"]
+[ext_resource type="ArrayMesh" uid="uid://dcm6vaqnq8422" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/obj/ducky.obj" id="2_7h3nu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4u2ra"]
+size = Vector3(0.423828, 0.417542, 0.503906)
+
+[node name="Memories" type="RigidBody3D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_iemk0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288086, 0.291229, 0.248047)
+shape = SubResource("BoxShape3D_4u2ra")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146164, -0.213303, 0)
+mesh = ExtResource("2_7h3nu")

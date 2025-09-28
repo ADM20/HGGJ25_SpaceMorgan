@@ -10,8 +10,10 @@ func _ready():
 func _process(delta):
 	pass
 
-func interact():
-	Global.set_oxygenlevel(100)
+func interact(grabbing : bool):
+	if grabbing:
+		Global.set_oxygenlevel(100)
+		print("oxygen")
 
 func station():
 	pass

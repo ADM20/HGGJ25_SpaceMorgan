@@ -17,6 +17,12 @@ extends CharacterBody3D
 ## Can we press to enter freefly mode (noclip)?
 @export var can_freefly : bool = false
 
+@export var push = 5
+@export var grab_force = 10
+@export var release_force = 0.4
+var grab:RigidBody3D
+
+
 @export_group("Speeds")
 ## Look around rotation speed.
 @export var look_speed : float = 0.002
@@ -44,15 +50,20 @@ extends CharacterBody3D
 @export var input_sprint : String = "sprint"
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "freefly"
-
+var grabbing : bool = false
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
-
+var canMove : bool = true
+@onready var grab_ray:Area3D =  $GrabRay #The raycast to check if there is something to grab
+@onready var grab_target:Node3D = $GrabRay/GrabTarget #The taget of the grabbed object
+## Camera node for transitioning
+@onready var camera = $Head/Camera3D
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+
 
 func _ready() -> void:
 	capture_mouse()
@@ -68,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		release_mouse()
 	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
@@ -81,6 +92,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			disable_freefly()
 
+	
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
@@ -90,9 +102,24 @@ func _physics_process(delta: float) -> void:
 		move_and_collide(motion)
 		return
 	if Input.is_action_just_pressed("interact"):
+		print("interact ", grabbing)
 		if current_station != null:
-			current_station.get_parent().interact()
-	
+			current_station.get_parent().interact(grabbing)
+			if grabbing:
+				grab.queue_free()
+
+	if Input.is_action_just_pressed("grab"): #If we are pressing the grab action
+		if grabbing == false && grab != null:
+			grabbing = true
+			await get_tree().create_timer(2).timeout
+		elif grabbing == true: 
+			grabbing = false
+
+	if grabbing:
+		grab.global_position.x = grab_target.global_position.x
+		grab.global_position.y = grab_target.global_position.y
+		grab.global_position.z = grab_target.global_position.z -1
+		#grab.linear_velocity = grab_force * (grab_target.global_position - grab.global_position)
 	# Apply gravity to velocity
 	if has_gravity:
 		if not is_on_floor():
@@ -120,17 +147,17 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, move_speed)
 			velocity.z = move_toward(velocity.z, 0, move_speed)
 	else:
-		velocity.x = 0
-		velocity.y = 0
+		velocity = Vector3(0,0,0)
 	
 	# Use velocity to actually move
 	move_and_slide()
 	#Update Camera Location (Camera Lag)
 	$Head.position = lerp($Head.position,position,0.05)
 	$Head.rotation = rotation
+	
 
 
-## Rotate us to look around.
+## Rotate us to look around.`
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
 func rotate_look(rot_input : Vector2):
@@ -141,7 +168,11 @@ func rotate_look(rot_input : Vector2):
 	rotate_y(look_rotation.y)
 	head.transform.basis = Basis()
 	head.rotate_x(look_rotation.x)
-
+func release():
+	grab.max_contacts_reported = 0 #Disable collision check on the grabbed object
+	grab.contact_monitor = false #Disable collision check on the grabbed object
+	grab.linear_velocity *= release_force #Apply the release force
+	grab = null #Reset the grabbed object
 
 func enable_freefly():
 	collider.disabled = true
@@ -198,3 +229,19 @@ func _on_area_3d_area_entered(area):
 func _on_area_3d_area_exited(area):
 	if area.get_parent().has_method("station"):
 		current_station = null
+
+func change_state(newState : String):
+	$StateMachine.change_state(newState)
+
+func _on_grab_ray_body_entered(body):
+	if body.has_method("memory") && grabbing == false:
+		grab = body
+
+
+func _on_grab_ray_body_exited(body):
+	if body.has_method("memory") && grabbing == false: 
+		grab = null
+
+# used to disable movement when interacting with a station
+func _enable_player_movement(canMove : bool):
+	can_move = canMove

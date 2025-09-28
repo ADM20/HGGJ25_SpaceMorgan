@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bat8gbjlg2b7d"]
+
+[ext_resource type="Script" uid="uid://b7x6fxl6fb3ue" path="res://Scripts/you_lose.gd" id="1_tpxky"]
+
+[node name="YouLose" type="Node2D"]
+script = ExtResource("1_tpxky")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(-0.55, -0.54)
+offset_left = 287.0
+offset_top = 153.0
+offset_right = 878.07
+offset_bottom = 355.36
+theme_override_font_sizes/normal_font_size = 121
+text = "You Lose"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnToMenu" type="Button" parent="."]
+offset_left = 427.0
+offset_top = 381.0
+offset_right = 727.0
+offset_bottom = 481.0
+text = "Return To Menu"
+
+[connection signal="pressed" from="ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

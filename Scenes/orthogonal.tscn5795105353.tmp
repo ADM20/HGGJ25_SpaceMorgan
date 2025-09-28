@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn7ovoqx7te6w"]
+[gd_scene load_steps=8 format=3 uid="uid://bn7ovoqx7te6w"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_yrxh1"]
-[ext_resource type="PackedScene" uid="uid://c2gkfgp6qswdq" path="res://Scenes/canvas_layer.tscn" id="2_oos1j"]
-[ext_resource type="PackedScene" uid="uid://b2jynhwltdc72" path="res://Scenes/oxygen_station.tscn" id="3_hx0qy"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_5e0ym"]
+[ext_resource type="PackedScene" uid="uid://c2gkfgp6qswdq" path="res://Scenes/canvas_layer.tscn" id="2_bb540"]
+[ext_resource type="PackedScene" uid="uid://b2jynhwltdc72" path="res://Scenes/oxygen_station.tscn" id="3_x5k0e"]
+[ext_resource type="PackedScene" uid="uid://clmrsi50y6tdf" path="res://Scenes/CameraTransitionTest_station.tscn" id="4_wvs1l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_onc1d"]
 sky_top_color = Color(0.386642, 0.464841, 0.481484, 1)
@@ -151,10 +152,13 @@ radius = 0.2
 height = 5.575
 sides = 32
 
-[node name="ProtoController" parent="." instance=ExtResource("1_yrxh1")]
+[node name="ProtoController" parent="." instance=ExtResource("1_5e0ym")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.4, 0.5, 4.3)
 
-[node name="CanvasLayer" parent="ProtoController" instance=ExtResource("2_oos1j")]
+[node name="CanvasLayer" parent="ProtoController" instance=ExtResource("2_bb540")]
 
-[node name="OxygenStation" parent="." instance=ExtResource("3_hx0qy")]
+[node name="OxygenStation" parent="." instance=ExtResource("3_x5k0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.76773, 5)
+
+[node name="CameraTransitionStation" parent="." instance=ExtResource("4_wvs1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, -10.8)

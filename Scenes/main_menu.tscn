@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://btx586r70etio"]
 
-[ext_resource type="Script" uid="uid://crlm6uwu5enck" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://crlm6uwu5enck" path="res://Scripts/main_menu.gd" id="1_28flt"]
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_06t4h")
+script = ExtResource("1_28flt")
 
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
@@ -28,15 +28,17 @@ offset_bottom = 550.0
 text = "Quit
 "
 
-[node name="test" type="Button" parent="ButtonManager"]
-layout_mode = 0
-offset_left = 369.0
-offset_top = 231.0
-offset_right = 675.0
-offset_bottom = 317.0
-text = "test"
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 122.0
+offset_top = 91.0
+offset_right = 951.0
+offset_bottom = 285.0
+theme_override_font_sizes/bold_italics_font_size = 2181
+theme_override_font_sizes/normal_font_size = 91
+text = "Morgan's Space"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_orthogonal_pressed"]
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_orthogonal_pressed"]
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="ButtonManager/test" to="." method="_on_test_pressed"]

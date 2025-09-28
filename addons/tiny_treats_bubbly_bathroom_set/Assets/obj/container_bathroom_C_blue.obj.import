@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqq5kneu1kd40"
+path="res://.godot/imported/container_bathroom_C_blue.obj-5b232931e7822956fc6050d36eee538f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/container_bathroom_C_blue.obj-5b232931e7822956fc6050d36eee538f.mesh"]
+
+source_file="res://addons/tiny_treats_bubbly_bathroom_set/Assets/obj/container_bathroom_C_blue.obj"
+dest_files=["res://.godot/imported/container_bathroom_C_blue.obj-5b232931e7822956fc6050d36eee538f.mesh", "res://.godot/imported/container_bathroom_C_blue.obj-5b232931e7822956fc6050d36eee538f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
