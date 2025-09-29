@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhv1dvanodr1u"]
+
+[ext_resource type="Script" uid="uid://k2v2n5fat0jv" path="res://music_base.gd" id="1_bvkq4"]
+[ext_resource type="AudioStream" uid="uid://dy463vfq7wm8u" path="res://Music Assets/Section 1/Section 1 - Base.wav" id="2_1d05q"]
+[ext_resource type="AudioStream" uid="uid://bhc852n3evybe" path="res://Music Assets/Section 2/Section 2 - Base.wav" id="3_rhkoo"]
+[ext_resource type="AudioStream" uid="uid://dky700haf0a16" path="res://Music Assets/Section 3/Section 3 - Base.wav" id="4_4v833"]
+[ext_resource type="AudioStream" uid="uid://bk13l7vretj2c" path="res://Music Assets/Section 4/Section 4 - Base.wav" id="5_ysxj4"]
+[ext_resource type="AudioStream" uid="uid://df17lkpxlv2w2" path="res://Music Assets/Section 5/Section 5 - Base.wav" id="6_2wial"]
+[ext_resource type="AudioStream" uid="uid://cxj77ntnw11co" path="res://Music Assets/Section 6/Section 6 - Base.wav" id="7_osp8i"]
+[ext_resource type="AudioStream" uid="uid://d3vhd7h2wf401" path="res://Music Assets/Section 7/Section 7 - Base.wav" id="8_s03d6"]
+[ext_resource type="AudioStream" uid="uid://vjtsuxomup0w" path="res://Music Assets/Section 8/Section 8 - Base.wav" id="9_mhfsx"]
+[ext_resource type="AudioStream" uid="uid://hwipgqpkuc30" path="res://Music Assets/Section 9/Section 9 - Base.wav" id="10_nurs3"]
+[ext_resource type="AudioStream" uid="uid://biyirdvqat2f6" path="res://Music Assets/Section 10/Section 10 - Base.wav" id="11_p5nuv"]
+
+[node name="music_base" type="Node3D"]
+script = ExtResource("1_bvkq4")
+
+[node name="music_base1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1d05q")
+
+[node name="music_base2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rhkoo")
+
+[node name="music_base3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4v833")
+
+[node name="music_base4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ysxj4")
+
+[node name="music_base5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2wial")
+
+[node name="music_base6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_osp8i")
+
+[node name="music_base7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_s03d6")
+
+[node name="music_base8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mhfsx")
+
+[node name="music_base9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_nurs3")
+
+[node name="music_base10" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_p5nuv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 13.714
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

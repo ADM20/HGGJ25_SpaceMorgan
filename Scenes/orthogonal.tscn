@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bn7ovoqx7te6w"]
+[gd_scene load_steps=14 format=3 uid="uid://bn7ovoqx7te6w"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_5e0ym"]
 [ext_resource type="PackedScene" uid="uid://c2gkfgp6qswdq" path="res://Scenes/canvas_layer.tscn" id="2_bb540"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bxs1r58o4iqdf" path="res://Scenes/gunner_station.tscn" id="7_wvs1l"]
 [ext_resource type="PackedScene" uid="uid://celfwkx6jfqka" path="res://Scenes/game_state.tscn" id="8_1fyhp"]
 [ext_resource type="PackedScene" uid="uid://bjl5d5xqdos7t" path="res://Scenes/radar_station.tscn" id="9_g3vfm"]
+[ext_resource type="PackedScene" uid="uid://bhv1dvanodr1u" path="res://Scenes/music_base.tscn" id="10_dsfqf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_onc1d"]
 sky_top_color = Color(0.386642, 0.464841, 0.481484, 1)
@@ -169,3 +170,11 @@ transform = Transform3D(-1, 0, -1.68854e-08, 0, 1, 0, 1.68854e-08, 0, -1, -4.8, 
 
 [node name="RadarStation" parent="." instance=ExtResource("9_g3vfm")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 5.9, 0.7, -16.7)
+
+[node name="music_base" parent="." instance=ExtResource("10_dsfqf")]
+
+[node name="Timer2" type="Timer" parent="music_base"]
+wait_time = 27.0
+autostart = true
+
+[connection signal="timeout" from="music_base/Timer2" to="music_base" method="_on_timer_2_timeout"]

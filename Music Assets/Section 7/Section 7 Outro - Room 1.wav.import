@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cknlvv3kj6b24"
+path="res://.godot/imported/Section 7 Outro - Room 1.wav-24b90bce1216a1607356835865d4d2c9.sample"
+
+[deps]
+
+source_file="res://Music Assets/Section 7/Section 7 Outro - Room 1.wav"
+dest_files=["res://.godot/imported/Section 7 Outro - Room 1.wav-24b90bce1216a1607356835865d4d2c9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kcxxj4kqfoop"
+path="res://.godot/imported/Section 3 - Room 1.wav-de65e0ab1c7ead1293606652be4a1eb4.sample"
+
+[deps]
+
+source_file="res://Music Assets/Section 3/Section 3 - Room 1.wav"
+dest_files=["res://.godot/imported/Section 3 - Room 1.wav-de65e0ab1c7ead1293606652be4a1eb4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
