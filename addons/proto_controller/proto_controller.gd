@@ -63,7 +63,7 @@ var canMove : bool = true
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
-
+var shakeCamera := false
 
 func _ready() -> void:
 	capture_mouse()
@@ -154,7 +154,9 @@ func _physics_process(delta: float) -> void:
 	#Update Camera Location (Camera Lag)
 	$Head.position = lerp($Head.position,position,0.05)
 	$Head.rotation = rotation
-	
+	if shakeCamera:
+		$Head.position.x = $Head.position.x + randf_range(-1,1)
+		$Head.position.y = $Head.position.y + randf_range(-1,1)
 
 
 ## Rotate us to look around.`
@@ -245,3 +247,11 @@ func _on_grab_ray_body_exited(body):
 # used to disable movement when interacting with a station
 func _enable_player_movement(canMove : bool):
 	can_move = canMove
+
+func ShakeCamera():
+	shakeCamera = true
+	$Head/Camera3D/ShakeTimer.start()
+
+func _on_shake_timer_timeout() -> void:
+	shakeCamera = false
+	$Head/Camera3D/ShakeTimer.stop()

@@ -4,7 +4,12 @@ var HP : int = 5
 var EnemiesSpawned : int = 0
 var EnemyLocation : float = 0.0 # angle in degrees
 var EnemyLocationRad
+var player
 
+func _ready() -> void:
+	$CanvasLayer/Control/BoxContainer/Label.text = "Current Ship Health = " + str(HP)
+	player = get_tree().get_root().get_node("OverShoulder/ProtoController/")
+	
 func _on_timer_timeout() -> void:
 	EnemiesSpawned = 1
 	print("Enemy Spawned at")
@@ -24,8 +29,10 @@ func DestroyEnemy():
 # Damage player
 func _on_damage_timer_timeout() -> void:
 	HP -= 1
+	$CanvasLayer/Control/BoxContainer/Label.text = "Current Ship Health = " + str(HP)
 	$DamageTimer.start(randf()*30 + 30)
 	print("Take Damage From Enemy, remaining HP = ")
 	print(HP)
 	if HP <= 0:
 		get_tree().change_scene_to_file("res://Scenes/you_lose.tscn")
+	player.ShakeCamera()
