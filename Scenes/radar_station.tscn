@@ -12,6 +12,7 @@ radius = 5.27832
 viewport_path = NodePath("SubViewport")
 
 [node name="RadarStation" type="Node3D"]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
 script = ExtResource("1_fwl0y")
 
 [node name="Area3D" type="Area3D" parent="."]

@@ -148,8 +148,6 @@ sides = 32
 [node name="ProtoController" parent="." instance=ExtResource("2_bb540")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.09956, 0.5, -19.7758)
 
-[node name="CanvasLayer" parent="ProtoController" instance=ExtResource("2_bb540")]
-
 [node name="OxygenStation" parent="." instance=ExtResource("3_x5k0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.76773, 5)
 
@@ -161,6 +159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.053, 4.77673, 0)
 
 [node name="CameraTransitionStation" parent="." instance=ExtResource("6_x5k0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1, -2)
+visible = false
 
 [node name="GunnerStation" parent="." instance=ExtResource("7_wvs1l")]
 transform = Transform3D(-1, 0, -1.68854e-08, 0, 1, 0, 1.68854e-08, 0, -1, -4.8, 1, -19.5)

@@ -21,7 +21,7 @@ extends CharacterBody3D
 @export var grab_force = 10
 @export var release_force = 0.4
 var grab:RigidBody3D
-
+var move_dir
 
 @export_group("Speeds")
 ## Look around rotation speed.
@@ -56,6 +56,8 @@ var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 var canMove : bool = true
+var _last_move_dir := Vector3.BACK
+@onready var mesh = %GeneralSkeleton
 @onready var grab_ray:Area3D =  $GrabRay #The raycast to check if there is something to grab
 @onready var grab_target:Node3D = $GrabRay/GrabTarget #The taget of the grabbed object
 ## Camera node for transitioning
@@ -63,7 +65,7 @@ var canMove : bool = true
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
-
+@onready var animplayer = $AnimationPlayer
 
 func _ready() -> void:
 	capture_mouse()
@@ -94,6 +96,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	
 func _physics_process(delta: float) -> void:
+	if move_dir != null:
+		if move_dir.length() > 0.2:
+			_last_move_dir = move_dir
+	var target_angle := Vector3.BACK.signed_angle_to(_last_move_dir, Vector3.UP)
+	mesh.global_rotation.y = target_angle
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
@@ -139,7 +146,7 @@ func _physics_process(delta: float) -> void:
 	# Apply desired movement to velocity
 	if can_move:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
-		var move_dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		move_dir = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if move_dir:
 			velocity.x = move_dir.x * move_speed
 			velocity.z = move_dir.z * move_speed
@@ -148,7 +155,11 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z, 0, move_speed)
 	else:
 		velocity = Vector3(0,0,0)
-	
+	if velocity.length() > 0:
+		animplayer.play("running")
+	if velocity.length() == 0:
+		animplayer.play("animations/idle")
+		print("0 velocity")
 	# Use velocity to actually move
 	move_and_slide()
 	#Update Camera Location (Camera Lag)
