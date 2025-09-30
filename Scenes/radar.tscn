@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://boyxhkcpafety"]
+
+[ext_resource type="Script" uid="uid://bh3xl8phsxbcp" path="res://radar.gd" id="1_hpjrw"]
+[ext_resource type="Texture2D" uid="uid://ukysh6dlkcyw" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Our Assets/subradar.png" id="2_sc6hn"]
+[ext_resource type="Texture2D" uid="uid://0paxrvfuo4yc" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Our Assets/enemy.png" id="3_sc6hn"]
+
+[node name="Radar" type="Node2D"]
+script = ExtResource("1_hpjrw")
+
+[node name="Subradar" type="Sprite2D" parent="."]
+position = Vector2(109, 49)
+scale = Vector2(0.109, 0.11)
+texture = ExtResource("2_sc6hn")
+
+[node name="Enemy" type="Sprite2D" parent="Subradar"]
+position = Vector2(-119, -109)
+texture = ExtResource("3_sc6hn")

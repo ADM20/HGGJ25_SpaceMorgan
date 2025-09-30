@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://do7836u7x66ov"
-path="res://.godot/imported/Wall_Flat_v01.fbx-47f314c9522ccd105b135a778fe1d3f1.scn"
+uid="uid://b5610qcd4mnvp"
+path="res://.godot/imported/Box_Small_v01.fbx-85f7b8095064376cc162c9bfa2bc75fa.scn"
 
 [deps]
 
-source_file="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Wall_Flat_v01.fbx"
-dest_files=["res://.godot/imported/Wall_Flat_v01.fbx-47f314c9522ccd105b135a778fe1d3f1.scn"]
+source_file="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Our Assets/Box_Small_v01.fbx"
+dest_files=["res://.godot/imported/Box_Small_v01.fbx-85f7b8095064376cc162c9bfa2bc75fa.scn"]
 
 [params]
 

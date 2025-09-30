@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bn7ovoqx7te6w"]
+[gd_scene load_steps=13 format=3 uid="uid://bn7ovoqx7te6w"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_5e0ym"]
-[ext_resource type="PackedScene" uid="uid://c2gkfgp6qswdq" path="res://Scenes/canvas_layer.tscn" id="2_bb540"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_bb540"]
 [ext_resource type="PackedScene" uid="uid://b2jynhwltdc72" path="res://Scenes/oxygen_station.tscn" id="3_x5k0e"]
 [ext_resource type="PackedScene" uid="uid://cl6tfdahfd5rg" path="res://Scenes/memories.tscn" id="5_bb540"]
 [ext_resource type="PackedScene" uid="uid://d3nijjvc82ox4" path="res://Scenes/spawner.tscn" id="5_x5k0e"]
@@ -146,7 +145,7 @@ radius = 0.2
 height = 5.575
 sides = 32
 
-[node name="ProtoController" parent="." instance=ExtResource("1_5e0ym")]
+[node name="ProtoController" parent="." instance=ExtResource("2_bb540")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.09956, 0.5, -19.7758)
 
 [node name="CanvasLayer" parent="ProtoController" instance=ExtResource("2_bb540")]
