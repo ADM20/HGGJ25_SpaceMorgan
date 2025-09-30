@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2gkfgp6qswdq"]
+
+[ext_resource type="Texture2D" uid="uid://qy50ywmmmnh6" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Our Assets/istockphoto-2148732074-612x612.jpg" id="1_q85f0"]
+[ext_resource type="Texture2D" uid="uid://ctd28oeia3sg4" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Our Assets/hunger bar.png" id="1_u5uhc"]
+[ext_resource type="Script" uid="uid://ch5q05e6vrx7a" path="res://Scenes/texture_progress_bar.gd" id="3_p1mel"]
+[ext_resource type="Script" uid="uid://1h5aam10w6y" path="res://Scenes/texture_progress_bar_2.gd" id="4_o6y36"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_top = 47.0
+offset_right = 149.0
+offset_bottom = 125.0
+value = 100.0
+texture_progress = ExtResource("1_u5uhc")
+script = ExtResource("3_p1mel")
+
+[node name="FoodTimer" type="Timer" parent="TextureProgressBar"]
+wait_time = 5.0
+autostart = true
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+offset_left = 1.0
+offset_right = 185.0
+offset_bottom = 36.0
+value = 100.0
+texture_progress = ExtResource("1_q85f0")
+script = ExtResource("4_o6y36")
+
+[node name="OxygenTimer" type="Timer" parent="TextureProgressBar2"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TextureProgressBar/FoodTimer" to="TextureProgressBar" method="_on_food_timer_timeout"]
+[connection signal="timeout" from="TextureProgressBar2/OxygenTimer" to="TextureProgressBar2" method="_on_oxygen_timer_timeout"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://clridn4h220i4"]
+
+[ext_resource type="Script" uid="uid://dru7saa5vbqpk" path="res://Scenes/missile.gd" id="1_1g1yv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cqmfq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u28tq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1g1yv"]
+
+[node name="Missile" type="CharacterBody3D"]
+script = ExtResource("1_1g1yv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cqmfq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_u28tq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1g1yv")
+debug_fill = false
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

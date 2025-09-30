@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3beu266db2we"]
+
+[ext_resource type="Script" uid="uid://pdomgeyfqmnx" path="res://Scenes/room_4.gd" id="1_25m4w"]
+[ext_resource type="AudioStream" uid="uid://ct6u1tfdjj14y" path="res://Music Assets/Section 1/Section 1 - Room 4.wav" id="1_txrf6"]
+[ext_resource type="AudioStream" uid="uid://b75qh3sllhp5e" path="res://Music Assets/Section 2/Section 2 - Room 4.wav" id="2_25m4w"]
+[ext_resource type="AudioStream" uid="uid://craalbnod1udk" path="res://Music Assets/Section 3/Section 3 - Room 4.wav" id="3_e1ba5"]
+[ext_resource type="AudioStream" uid="uid://bk6yiycrhjcw" path="res://Music Assets/Section 4/Section 4 - Room 4.wav" id="4_7lfuo"]
+[ext_resource type="AudioStream" uid="uid://b3ymfxfh6jaw1" path="res://Music Assets/Section 5/Section 5 - Room 4.wav" id="5_nqyyg"]
+[ext_resource type="AudioStream" uid="uid://hsg3c1tapue4" path="res://Music Assets/Section 6/Section 6 - Room 4.wav" id="6_dr7ml"]
+[ext_resource type="AudioStream" uid="uid://d0n2vutg6k34i" path="res://Music Assets/Section 7/Section 7 - Room 4.wav" id="7_f7on5"]
+[ext_resource type="AudioStream" uid="uid://3jlj3uvsdgmi" path="res://Music Assets/Section 8/Section 8 - Room 4.wav" id="8_m2p1p"]
+[ext_resource type="AudioStream" uid="uid://b16rar71lpbis" path="res://Music Assets/Section 9/Section 9 - Room 4.wav" id="9_q4yu3"]
+[ext_resource type="AudioStream" uid="uid://dy15iwlww8u7s" path="res://Music Assets/Section 10/Section 10 - Room 4.wav" id="10_7fg02"]
+
+[node name="room_4" type="Node3D"]
+script = ExtResource("1_25m4w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 13.714
+autostart = true
+
+[node name="section1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_txrf6")
+max_distance = 75.0
+
+[node name="section2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_25m4w")
+max_distance = 75.0
+
+[node name="section3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_e1ba5")
+max_distance = 75.0
+
+[node name="section4" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_7lfuo")
+max_distance = 75.0
+
+[node name="section5" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_nqyyg")
+max_distance = 75.0
+
+[node name="section6" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_dr7ml")
+max_distance = 75.0
+
+[node name="section7" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_f7on5")
+max_distance = 75.0
+
+[node name="section8" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_m2p1p")
+max_distance = 75.0
+
+[node name="section9" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_q4yu3")
+max_distance = 75.0
+
+[node name="section10" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_7fg02")
+max_distance = 75.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

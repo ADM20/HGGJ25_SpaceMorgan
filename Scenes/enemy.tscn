@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdssscr1a2bd3"]
+
+[ext_resource type="Script" uid="uid://ce8q3ee3sor5t" path="res://enemy.gd" id="1_1f0kj"]
+[ext_resource type="ArrayMesh" uid="uid://dcm6vaqnq8422" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/obj/ducky.obj" id="2_afpow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_287tu"]
+size = Vector3(3.25511, 4.62186, 4.92796)
+
+[node name="Enemy" type="Node3D"]
+script = ExtResource("1_1f0kj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.0184817, -0.213303, 0.00211167)
+mesh = ExtResource("2_afpow")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00523722, 1.8868, 0.48842)
+shape = SubResource("BoxShape3D_287tu")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
