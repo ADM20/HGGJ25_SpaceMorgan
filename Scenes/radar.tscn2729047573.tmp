@@ -13,7 +13,6 @@ scale = Vector2(0.109, 0.11)
 texture = ExtResource("2_sc6hn")
 
 [node name="Enemy" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(109, 49)
 scale = Vector2(0.109, 0.11)
 texture = ExtResource("3_sc6hn")

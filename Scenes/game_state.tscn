@@ -45,5 +45,74 @@ texture = SubResource("CanvasTexture_v31h2")
 one_shot = true
 autostart = true
 
+[node name="EnemyControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 334.0
+offset_top = 39.0
+offset_right = 1039.0
+offset_bottom = 109.0
+grow_horizontal = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="EnemyControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="EnemyControl/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Enemy Ship Detected -  Use the Radar to find out where and then shoot it with the turret!"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="EnemyControl"]
+self_modulate = Color(0.752381, 0.184037, 0.0737517, 1)
+z_index = -1
+layout_mode = 2
+offset_left = -14.0
+offset_right = 704.0
+offset_bottom = 43.0
+texture = SubResource("CanvasTexture_v31h2")
+
+[node name="EnemyDestroyControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 597.0
+offset_top = 47.0
+offset_right = 1302.0
+offset_bottom = 117.0
+grow_horizontal = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="EnemyDestroyControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="EnemyDestroyControl/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Enemy Destroyed!"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="EnemyDestroyControl"]
+self_modulate = Color(2.86378e-06, 0.615447, 0.220409, 1)
+z_index = -1
+layout_mode = 2
+offset_left = -14.0
+offset_right = 161.0
+offset_bottom = 43.0
+texture = SubResource("CanvasTexture_v31h2")
+
+[node name="EnemyDestroyedTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyDestroyedTimer" to="." method="_on_enemy_destroyed_timer_timeout"]
