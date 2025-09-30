@@ -1,16 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://celfwkx6jfqka"]
+[gd_scene load_steps=3 format=3 uid="uid://celfwkx6jfqka"]
 
 [ext_resource type="Script" uid="uid://bl4j3bd7ttjq2" path="res://Scripts/game_state.gd" id="1_v31h2"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_v31h2"]
+
 [node name="GameState" type="Node2D"]
 script = ExtResource("1_v31h2")
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ship HP = "
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+z_index = -1
+layout_mode = 2
+offset_left = -14.0
+offset_right = 299.0
+offset_bottom = 40.0
+texture = SubResource("CanvasTexture_v31h2")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[node name="DamageTimer" type="Timer" parent="."]
-wait_time = 60.0
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

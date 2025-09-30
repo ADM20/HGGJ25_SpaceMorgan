@@ -66,6 +66,8 @@ var _last_move_dir := Vector3.BACK
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 @onready var animplayer = $AnimationPlayer
+# shake when damaged
+var shakeCamera := false
 
 func _ready() -> void:
 	capture_mouse()
@@ -165,6 +167,11 @@ func _physics_process(delta: float) -> void:
 	$Head.position = lerp($Head.position,position,0.05)
 	$Head.rotation = rotation
 	
+	# shake on damage 
+	if shakeCamera:
+		$Head.position.x = $Head.position.x + randf_range(-1,1)
+		$Head.position.y = $Head.position.y + randf_range(-1,1)
+	
 
 
 ## Rotate us to look around.`
@@ -257,3 +264,11 @@ func _enable_player_movement(canMove : bool):
 	can_move = canMove
 	can_jump = canMove
 	print(can_jump)
+
+func ShakeCamera():
+	shakeCamera = true
+	$Head/Camera3D/ShakeTimer.start()
+# timer to track how long to shake camera
+func _on_shake_timer_timeout() -> void:
+	shakeCamera = false
+	$Head/Camera3D/ShakeTimer.stop()
