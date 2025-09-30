@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://eta1pktkjkuh"]
+[gd_scene load_steps=12 format=3 uid="uid://eta1pktkjkuh"]
 
+[ext_resource type="Script" uid="uid://cjdjw724hxkeg" path="res://Scenes/room_3.gd" id="1_8xtj1"]
 [ext_resource type="AudioStream" uid="uid://b4s85hesemhr2" path="res://Music Assets/Section 1/Section 1 - Room 3.wav" id="1_duync"]
 [ext_resource type="AudioStream" uid="uid://crvmamtukf487" path="res://Music Assets/Section 2/Section 2 - Room 3.wav" id="2_8xtj1"]
 [ext_resource type="AudioStream" uid="uid://73u87fkphqnu" path="res://Music Assets/Section 3/Section 3 - Room 3.wav" id="3_iqr7u"]
@@ -12,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dyg8hwwordb3m" path="res://Music Assets/Section 10/Section 10 - Room 3.wav" id="10_3dftf"]
 
 [node name="room_3" type="Node3D"]
+script = ExtResource("1_8xtj1")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 13.714
@@ -19,30 +21,42 @@ autostart = true
 
 [node name="section1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("1_duync")
+max_distance = 100.0
 
 [node name="section2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_8xtj1")
+max_distance = 100.0
 
 [node name="section3" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_iqr7u")
+max_distance = 100.0
 
 [node name="section4" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_lcnjt")
+max_distance = 100.0
 
 [node name="section5" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_h86vn")
+max_distance = 100.0
 
 [node name="section6" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_p4qfg")
+max_distance = 100.0
 
 [node name="section7" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_cjyv8")
+max_distance = 100.0
 
 [node name="section8" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_bgoht")
+max_distance = 100.0
 
 [node name="section9" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_vu3r4")
+max_distance = 100.0
 
 [node name="section10" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_3dftf")
+max_distance = 100.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

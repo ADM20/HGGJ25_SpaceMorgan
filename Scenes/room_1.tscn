@@ -21,32 +21,42 @@ autostart = true
 
 [node name="section1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_le3mp")
+max_distance = 100.0
 
 [node name="section2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_33xc7")
+max_distance = 100.0
 
 [node name="section3" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_yt43a")
+max_distance = 100.0
 
 [node name="section4" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_m1vre")
+max_distance = 100.0
 
 [node name="section5" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_ncark")
+max_distance = 100.0
 
 [node name="section6" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_eh47o")
+max_distance = 100.0
 
 [node name="section7" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_4onnq")
+max_distance = 100.0
 
 [node name="section8" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_yqast")
+max_distance = 100.0
 
 [node name="section9" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_scr8c")
+max_distance = 100.0
 
 [node name="section10" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_8h4dc")
+max_distance = 100.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
