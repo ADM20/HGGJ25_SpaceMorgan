@@ -25,4 +25,7 @@ wait_time = 10.0
 [node name="Turret_MorganJamblend" parent="." instance=ExtResource("2_02u4g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.417003, -0.177709, 0.365728)
 
+[node name="Camera3D" type="Camera3D" parent="Turret_MorganJamblend"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19232, 3.71604)
+
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

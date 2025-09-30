@@ -17,6 +17,7 @@ script = ExtResource("1_ghlka")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 13.714
+autostart = true
 
 [node name="section1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_aund5")

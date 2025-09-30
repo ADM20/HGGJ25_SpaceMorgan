@@ -9,7 +9,7 @@ var player
 ## Name of Input Action to move Backward.
 @export var input_back : String = "move_down"
 @export var input_shoot : String = "ui_accept"
-
+@onready var gunmesh= $Turret_MorganJamblend
 var active_station : bool = false
 var rotation_speed := 90.0 # degrees per second
 var direction := 0.0
@@ -23,12 +23,12 @@ func _ready():
 	radar = get_tree().get_root().get_node("OverShoulder/RadarStation/")
 
 func interact(grabbing : bool):
-	if $GunMesh/CameraTarget/Camera3D.is_current():
+	if $Turret_MorganJamblend/Camera3D.is_current():
 		get_tree().get_root().get_node("OverShoulder/ProtoController/Head/Camera3D").make_current()
 		player._enable_player_movement(true)
 		active_station = false
 	else: 
-		$GunMesh/CameraTarget/Camera3D.make_current()
+		$Turret_MorganJamblend/Camera3D.make_current()
 		player._enable_player_movement(false)
 		active_station = true
 func station():
@@ -42,18 +42,18 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("move_right"): 
 			direction = -1.0
 		if direction != 0.0:
-			$GunMesh.rotate_y(deg_to_rad(rotation_speed * delta * direction))
+			gunmesh.rotate_y(deg_to_rad(rotation_speed * delta * direction))
 			
 		if Input.is_action_just_pressed(input_shoot) and canShoot:
-			var gunRotation = normalize_angle(rad_to_deg($GunMesh.rotation.y))
+			var gunRotation = normalize_angle(rad_to_deg(gunmesh.rotation.y))
 			var enemyLocation = normalize_angle(gameState.EnemyLocation)
 			print(gunRotation)
 			print(enemyLocation)
 			if abs(gunRotation - enemyLocation) <= 20.0:
 				gameState.DestroyEnemy()
 				print("HIT!")
+				$"../Spawner".spawn()
 			canShoot = false
-			$GunMesh/GunTip_debug.rotate_x(deg_to_rad(90))
 			$GunCooldown.start()
 func normalize_angle(angle_degrees: float) -> float:
 	return fmod(angle_degrees + 360.0, 360.0)
@@ -61,4 +61,4 @@ func normalize_angle(angle_degrees: float) -> float:
 
 func _on_gun_cooldown_timeout() -> void:
 	canShoot = true
-	$GunMesh/GunTip_debug.rotate_x(deg_to_rad(-90))
+	gunmesh.rotate_x(deg_to_rad(-90))

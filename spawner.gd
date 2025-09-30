@@ -12,6 +12,8 @@ func _process(delta):
 
 
 func _on_timer_timeout():
+	spawn()
+func spawn():
 	var mem = memory.instantiate()
 	mem.global_position = $".".global_position
 	get_parent().add_child(mem)

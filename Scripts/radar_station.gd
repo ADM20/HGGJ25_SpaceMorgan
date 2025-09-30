@@ -9,8 +9,6 @@ func interact(_grabbing : bool):
 	# print(gameState.EnemyLocation)
 	
 func radarScan():
-	if gameState.EnemiesSpawned == 1:
-		$EnemyLocationHead.global_transform = Transform3D(Basis(Vector3.UP, gameState.EnemyLocationRad),$EnemyLocationHead.global_transform.origin)
 	print("Radar Scanning...")
 
 func station():

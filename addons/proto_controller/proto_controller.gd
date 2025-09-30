@@ -159,7 +159,6 @@ func _physics_process(delta: float) -> void:
 		animplayer.play("running")
 	if velocity.length() == 0:
 		animplayer.play("animations/idle")
-		print("0 velocity")
 	# Use velocity to actually move
 	move_and_slide()
 	#Update Camera Location (Camera Lag)
@@ -256,3 +255,5 @@ func _on_grab_ray_body_exited(body):
 # used to disable movement when interacting with a station
 func _enable_player_movement(canMove : bool):
 	can_move = canMove
+	can_jump = canMove
+	print(can_jump)

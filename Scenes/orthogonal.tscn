@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bn7ovoqx7te6w"]
+[gd_scene load_steps=18 format=3 uid="uid://bn7ovoqx7te6w"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_bb540"]
+[ext_resource type="PackedScene" uid="uid://c2gkfgp6qswdq" path="res://Scenes/canvas_layer.tscn" id="2_yicmp"]
 [ext_resource type="PackedScene" uid="uid://b2jynhwltdc72" path="res://Scenes/oxygen_station.tscn" id="3_x5k0e"]
 [ext_resource type="PackedScene" uid="uid://cl6tfdahfd5rg" path="res://Scenes/memories.tscn" id="5_bb540"]
 [ext_resource type="PackedScene" uid="uid://d3nijjvc82ox4" path="res://Scenes/spawner.tscn" id="5_x5k0e"]
@@ -9,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://celfwkx6jfqka" path="res://Scenes/game_state.tscn" id="8_1fyhp"]
 [ext_resource type="PackedScene" uid="uid://bjl5d5xqdos7t" path="res://Scenes/radar_station.tscn" id="9_g3vfm"]
 [ext_resource type="PackedScene" uid="uid://bhv1dvanodr1u" path="res://Scenes/music_base.tscn" id="10_dsfqf"]
+[ext_resource type="PackedScene" uid="uid://csmt3a14y0mqi" path="res://Scenes/room_1.tscn" id="10_ob34l"]
+[ext_resource type="PackedScene" uid="uid://hsqx6idublas" path="res://Scenes/room_2.tscn" id="11_yicmp"]
+[ext_resource type="PackedScene" uid="uid://eta1pktkjkuh" path="res://Scenes/room_3.tscn" id="12_lcfwn"]
+[ext_resource type="PackedScene" uid="uid://b3beu266db2we" path="res://Scenes/room_4.tscn" id="13_amc8s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_onc1d"]
 sky_top_color = Color(0.386642, 0.464841, 0.481484, 1)
@@ -148,6 +153,8 @@ sides = 32
 [node name="ProtoController" parent="." instance=ExtResource("2_bb540")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.09956, 0.5, -19.7758)
 
+[node name="CanvasLayer" parent="ProtoController" instance=ExtResource("2_yicmp")]
+
 [node name="OxygenStation" parent="." instance=ExtResource("3_x5k0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.76773, 5)
 
@@ -174,5 +181,17 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 5.9, 0.7
 [node name="Timer2" type="Timer" parent="music_base"]
 wait_time = 27.0
 autostart = true
+
+[node name="Room 1" parent="." instance=ExtResource("10_ob34l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.489, 0.5, 1.2825)
+
+[node name="Room2" parent="." instance=ExtResource("11_yicmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5142, 0.5, 2.73012)
+
+[node name="room_3" parent="." instance=ExtResource("12_lcfwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9328, 0.5, -17.0727)
+
+[node name="room_4" parent="." instance=ExtResource("13_amc8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6101, 0.499998, -16.9707)
 
 [connection signal="timeout" from="music_base/Timer2" to="music_base" method="_on_timer_2_timeout"]

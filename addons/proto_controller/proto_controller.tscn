@@ -15,7 +15,7 @@ height = 0.918091
 radius = 1.33643
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wr06p"]
-size = Vector3(1, 1, 1.94836)
+size = Vector3(2.77405, 1, 2.91164)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feyxp"]
 resource_name = "MorganSkin"
@@ -444,7 +444,7 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabRay"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.981207, 0.474182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0266724, -0.981207, -0.0521485)
 shape = SubResource("BoxShape3D_wr06p")
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="."]

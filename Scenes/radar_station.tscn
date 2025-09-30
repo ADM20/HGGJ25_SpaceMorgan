@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjl5d5xqdos7t"]
+[gd_scene load_steps=7 format=3 uid="uid://bjl5d5xqdos7t"]
 
 [ext_resource type="Script" uid="uid://b234pr06yrgj8" path="res://Scripts/radar_station.gd" id="1_fwl0y"]
 [ext_resource type="PackedScene" uid="uid://em4etp1eo24o" path="res://addons/tiny_treats_bubbly_bathroom_set/Assets/Our Assets/Console_v01.fbx" id="2_yivkn"]
@@ -6,32 +6,41 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3v0ou"]
 height = 1.34814
-radius = 5.27832
+radius = 5.60254
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_bt36r"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("StaticBody3D/SubViewport")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yivkn"]
+radius = 2.1001
 
 [node name="RadarStation" type="Node3D"]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
 script = ExtResource("1_fwl0y")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301026, 0.862918)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0.301026, 0.862918)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0168457, 0)
 shape = SubResource("CylinderShape3D_3v0ou")
 
-[node name="Console_v01" parent="." instance=ExtResource("2_yivkn")]
+[node name="Console_v01" parent="StaticBody3D" instance=ExtResource("2_yivkn")]
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="StaticBody3D"]
 
-[node name="Radar" parent="SubViewport" instance=ExtResource("3_dbaxv")]
+[node name="Radar" parent="StaticBody3D/SubViewport" instance=ExtResource("3_dbaxv")]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0.214735, 0.976672, 0, 0.976672, -0.214735, -1, -9.38638e-09, -4.26917e-08, -0.360246, 1.46705, 1.05276)
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D"]
+transform = Transform3D(-2.98023e-08, 0.214735, 0.976672, 0, 0.976672, -0.214735, -1, -7.45058e-09, 0, -0.360246, 1.46705, 1.05276)
 texture = SubResource("ViewportTexture_bt36r")
 region_enabled = true
 region_rect = Rect2(10, 10, 200, 75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, -5.4542e-09, -8.9407e-08, 1.49012e-08, 1, -1.75434e-09, 0, -2.03554e-08, 1, -0.5, 0, 0.866026)
+shape = SubResource("CylinderShape3D_yivkn")
